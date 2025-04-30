@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30-Day Fitness Challenge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Fit30</div>
+        <div class="nav-links">
+            <a href="#" id="home-link">Home</a>
+            <a href="#" id="login-link">Login</a>
+            <a href="#" id="register-link">Register</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Login Form -->
+        <div id="login-form" class="form-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <input type="email" id="login-email" placeholder="Email" required>
+                <input type="password" id="login-password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <!-- Registration Form -->
+        <div id="register-form" class="form-container">
+            <h2>Create Account</h2>
+            <form id="registerForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="email" id="email" placeholder="Email" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <input type="number" id="height" placeholder="Height (cm)" required>
+                <input type="number" id="weight" placeholder="Weight (kg)" required>
+                <input type="number" id="age" placeholder="Age" required>
+                <select id="fitness-level" required>
+                    <option value="">Select Fitness Level</option>
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="advanced">Advanced</option>
+                </select>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="dashboard-container">
+            <div class="user-info">
+                <h2>Welcome, <span id="user-name"></span>!</h2>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span>Current Day:</span>
+                        <span id="current-day">1</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Progress:</span>
+                        <span id="progress">0%</span>
+                    </div>
+                </div>
+                <div class="account-actions">
+                    <button id="delete-account" class="danger-btn">
+                        <i class="fas fa-trash"></i> Delete Account
+                    </button>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="workout-container">
+                    <div class="workout-header">
+                        <h3>Today's Workout - Day <span id="workout-day">1</span></h3>
+                        <div class="workout-meta">
+                            <span class="duration"><i class="fas fa-clock"></i> <span id="workout-duration">30</span> minutes</span>
+                            <span class="difficulty"><i class="fas fa-fire"></i> <span id="workout-difficulty">Beginner</span></span>
+                        </div>
+                    </div>
+                    
+                    <div id="workout-content" class="workout-exercises">
+                        <div class="exercise" onclick="showExerciseDemo(this)">
+                            <h5>Push-ups</h5>
+                            <div class="exercise-preview">
+                                <div class="preview-animation">
+                                    <div class="body">
+                                        <div class="head"></div>
+                                        <div class="torso"></div>
+                                        <div class="arms">
+                                            <div class="arm left"></div>
+                                            <div class="arm right"></div>
+                                        </div>
+                                        <div class="legs">
+                                            <div class="leg left"></div>
+                                            <div class="leg right"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="preview-info">
+                                    <span>Click to learn proper form</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Exercise Demo Modal -->
+                    <div id="exercise-demo-modal" class="modal">
+                        <div class="modal-content exercise-demo-content">
+                            <div class="demo-header">
+                                <h3 id="demo-exercise-name">Push-ups</h3>
+                                <button class="close-demo"><i class="fas fa-times"></i></button>
+                            </div>
+                            <div class="demo-body">
+                                <div class="exercise-animation-container">
+                                    <div class="animation-controls">
+                                        <button class="play-btn"><i class="fas fa-play"></i></button>
+                                        <button class="pause-btn"><i class="fas fa-pause"></i></button>
+                                        <button class="reset-btn"><i class="fas fa-redo"></i></button>
+                                        <button class="slow-btn"><i class="fas fa-tachometer-alt"></i></button>
+                                    </div>
+                                    <div class="animation-view">
+                                        <div class="exercise-demonstration">
+                                            <div class="pushup-animation">
+                                                <div class="body">
+                                                    <div class="head"></div>
+                                                    <div class="torso"></div>
+                                                    <div class="arms">
+                                                        <div class="arm left"></div>
+                                                        <div class="arm right"></div>
+                                                    </div>
+                                                    <div class="legs">
+                                                        <div class="leg left"></div>
+                                                        <div class="leg right"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="floor"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="exercise-instructions">
+                                    <div class="instruction-step active">
+                                        <div class="step-number">1</div>
+                                        <div class="step-content">
+                                            <h4>Starting Position</h4>
+                                            <p>Get into a plank position with your hands slightly wider than your shoulders. Keep your body in a straight line from head to heels.</p>
+                                        </div>
+                                    </div>
+                                    <div class="instruction-step">
+                                        <div class="step-number">2</div>
+                                        <div class="step-content">
+                                            <h4>Lowering Phase</h4>
+                                            <p>Bend your elbows and lower your body until your chest nearly touches the floor. Keep your elbows at a 45-degree angle.</p>
+                                        </div>
+                                    </div>
+                                    <div class="instruction-step">
+                                        <div class="step-number">3</div>
+                                        <div class="step-content">
+                                            <h4>Pushing Phase</h4>
+                                            <p>Push through your hands to return to the starting position. Keep your core engaged throughout the movement.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="exercise-tips">
+                                    <h4>Tips for Proper Form</h4>
+                                    <ul>
+                                        <li>Keep your core tight throughout the movement</li>
+                                        <li>Maintain a straight line from head to heels</li>
+                                        <li>Breathe in as you lower, breathe out as you push up</li>
+                                        <li>Keep your elbows at a 45-degree angle</li>
+                                        <li>Don't let your hips sag or rise</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="workout-actions">
+                        <button id="complete-workout" class="primary-btn">
+                            <i class="fas fa-check"></i> Mark as Complete
+                        </button>
+                        <div class="workout-timer">
+                            <span>Rest Timer:</span>
+                            <span id="timer">00:00</span>
+                            <button id="start-timer" class="secondary-btn">
+                                <i class="fas fa-play"></i> Start
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-tracker">
+                    <h3>Your Progress</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                    <div class="calendar">
+                        <!-- Calendar will be dynamically generated -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Account Confirmation Modal -->
+    <div id="delete-account-modal" class="modal">
+        <div class="modal-content">
+            <h3>Delete Account</h3>
+            <p>Are you sure you want to delete your account? This action cannot be undone.</p>
+            <div class="modal-actions">
+                <button id="confirm-delete" class="danger-btn">Yes, Delete My Account</button>
+                <button id="cancel-delete" class="secondary-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
